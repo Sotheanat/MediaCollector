@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MediaCollector.Class;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,13 +9,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MediaCollector
+namespace MediaCollector.Form
 {
-    public partial class fmMain : Form
+    public partial class ctrDisplayCard : UserControl
     {
-        public fmMain()
+        private Media media;
+
+        public ctrDisplayCard(Movie media)
         {
             InitializeComponent();
+
+            this.media = media;
         }
+
     }
 }
