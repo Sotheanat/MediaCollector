@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctrDisplayCard));
             this.pbCover = new System.Windows.Forms.PictureBox();
             this.lblTitle = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.ctmRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -47,22 +48,21 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pbCover.BackColor = System.Drawing.Color.DarkKhaki;
+            this.pbCover.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbCover.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbCover.InitialImage")));
             this.pbCover.Location = new System.Drawing.Point(3, 3);
             this.pbCover.Name = "pbCover";
-            this.pbCover.Size = new System.Drawing.Size(384, 324);
+            this.pbCover.Size = new System.Drawing.Size(359, 224);
             this.pbCover.TabIndex = 0;
             this.pbCover.TabStop = false;
             // 
             // lblTitle
             // 
-            this.lblTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTitle.AutoSize = false;
+            this.lblTitle.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblTitle.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.TitleControl;
-            this.lblTitle.Location = new System.Drawing.Point(3, 333);
+            this.lblTitle.Location = new System.Drawing.Point(0, 237);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(384, 47);
+            this.lblTitle.Size = new System.Drawing.Size(365, 29);
             this.lblTitle.TabIndex = 1;
             this.lblTitle.Values.ExtraText = "Length";
             this.lblTitle.Values.Text = "Title";
@@ -116,10 +116,11 @@
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.pbCover);
             this.Name = "ctrDisplayCard";
-            this.Size = new System.Drawing.Size(390, 383);
+            this.Size = new System.Drawing.Size(365, 266);
             ((System.ComponentModel.ISupportInitialize)(this.pbCover)).EndInit();
             this.ctmRightClick.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

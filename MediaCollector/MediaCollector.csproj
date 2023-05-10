@@ -87,6 +87,12 @@
     <Compile Include="Forms and Controls\ctrSearch.Designer.cs">
       <DependentUpon>ctrSearch.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms and Controls\fmSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms and Controls\fmSearch.Designer.cs">
+      <DependentUpon>fmSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms and Controls\ctrDisplayCard.resx">
@@ -100,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms and Controls\ctrSearch.resx">
       <DependentUpon>ctrSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms and Controls\fmSearch.resx">
+      <DependentUpon>fmSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

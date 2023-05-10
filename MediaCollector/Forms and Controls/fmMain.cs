@@ -33,7 +33,7 @@ namespace MediaCollector
         public fmMain()
         {
             InitializeComponent();
-            LoadDataFromXML();
+            //LoadDataFromXML();
             
         }
 
@@ -139,6 +139,11 @@ namespace MediaCollector
             {
                 flpMain.Controls.Add(new ctrDisplayCard((Movie)media));
             }
+
+            flpMain.Focus();
+
+            if(flpMain.Controls.Count > 0)
+                flpMain.ScrollControlIntoView(flpMain.Controls[flpMain.Controls.Count - 1]);
         }
 
         private void fmMain_Load(object sender, EventArgs e)
@@ -146,6 +151,67 @@ namespace MediaCollector
             LoadDataFromXML();
             InitDisplayCardControls();
         }
+
+
+
+
+        // Create A form for search so that searching process use less RAM
+        //START FROM HERE
+        private void txtSearch_Enter(object sender, EventArgs e)
+        {
+            if (txtSearch.Text.Equals("Search"))
+            {
+                txtSearch.Text = "";
+                txtSearch.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtSearch_Leave(object sender, EventArgs e)
+        {
+            if (txtSearch.Text == string.Empty)
+            {
+                txtSearch.Text = "Search";
+                txtSearch.ForeColor = Color.Silver;
+            }
+        }
+
+        private void pnMenu_Click(object sender, EventArgs e)
+        {
+            pnMenu.Focus();
+        }
+
+
+        // Search by hide Controls
+        private void txtSearch_KeyUp(object sender, KeyEventArgs e)
+        {
+            
+            if(txtSearch.Text.Count() > 1) 
+            {
+                string searchStr = txtSearch.Text;
+
+                // Visible = false for ctrl that has different name
+                foreach (Control ctrl in flpMain.Controls)
+                {
+                    ctrDisplayCard card = ctrl as ctrDisplayCard;
+
+                    if (card.Contains(searchStr.ToLower()))
+                    { flpMain.ScrollControlIntoView(card); break; }
+                }
+            }
+        }
+
+
+        private void pbLoading_Click(object sender, EventArgs e)
+        {
+            flpMain.ScrollControlIntoView(flpMain.Controls[0]);
+         }
+
+        private void pbLoading_DoubleClick(object sender, EventArgs e)
+        {
+            flpMain.ScrollControlIntoView(flpMain.Controls[flpMain.Controls.Count - 1]);
+        }
+
+        // HERE FROM ABOVE
     }
 }
 

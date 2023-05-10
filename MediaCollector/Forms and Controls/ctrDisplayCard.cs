@@ -29,6 +29,10 @@ namespace MediaCollector.Form
             lblTitle.Values.ExtraText = "";
             lblTitle.Values.Text = media.FolderName;
         }
+       public bool Contains (string FolderName) 
+        {
+            return this.media.FolderName.ToLower().Contains(FolderName);
+        }
 
     }
 }
