@@ -49,7 +49,7 @@
             this.pbCover.BackColor = System.Drawing.Color.DarkKhaki;
             this.pbCover.Location = new System.Drawing.Point(3, 3);
             this.pbCover.Name = "pbCover";
-            this.pbCover.Size = new System.Drawing.Size(334, 270);
+            this.pbCover.Size = new System.Drawing.Size(384, 324);
             this.pbCover.TabIndex = 0;
             this.pbCover.TabStop = false;
             // 
@@ -60,9 +60,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTitle.AutoSize = false;
             this.lblTitle.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.TitleControl;
-            this.lblTitle.Location = new System.Drawing.Point(3, 279);
+            this.lblTitle.Location = new System.Drawing.Point(3, 333);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(334, 51);
+            this.lblTitle.Size = new System.Drawing.Size(384, 47);
             this.lblTitle.TabIndex = 1;
             this.lblTitle.Values.ExtraText = "Length";
             this.lblTitle.Values.Text = "Title";
@@ -82,30 +82,30 @@
             // openFileLocationToolStripMenuItem
             // 
             this.openFileLocationToolStripMenuItem.Name = "openFileLocationToolStripMenuItem";
-            this.openFileLocationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openFileLocationToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.openFileLocationToolStripMenuItem.Text = "Open File Location";
             // 
             // renameToolStripMenuItem
             // 
             this.renameToolStripMenuItem.Name = "renameToolStripMenuItem";
-            this.renameToolStripMenuItem.Size = new System.Drawing.Size(177, 6);
+            this.renameToolStripMenuItem.Size = new System.Drawing.Size(170, 6);
             // 
             // renameToolStripMenuItem1
             // 
             this.renameToolStripMenuItem1.Name = "renameToolStripMenuItem1";
-            this.renameToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.renameToolStripMenuItem1.Size = new System.Drawing.Size(173, 22);
             this.renameToolStripMenuItem1.Text = "Rename";
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             // 
             // propertiesToolStripMenuItem
             // 
             this.propertiesToolStripMenuItem.Name = "propertiesToolStripMenuItem";
-            this.propertiesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.propertiesToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.propertiesToolStripMenuItem.Text = "Properties";
             // 
             // ctrDisplayCard
@@ -116,7 +116,7 @@
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.pbCover);
             this.Name = "ctrDisplayCard";
-            this.Size = new System.Drawing.Size(340, 333);
+            this.Size = new System.Drawing.Size(390, 383);
             ((System.ComponentModel.ISupportInitialize)(this.pbCover)).EndInit();
             this.ctmRightClick.ResumeLayout(false);
             this.ResumeLayout(false);

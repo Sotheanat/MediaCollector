@@ -11,28 +11,30 @@ using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
 using MediaCollector.Class;
 using System.Xml.Serialization;
+using MediaCollector.Form;
 
 namespace MediaCollector
 {
     public partial class fmMain : KryptonForm
     {
+
         /// <summary>
         /// Program setting 
         /// </summary>
-        //private int numberOfDisplayCard = 4;
-        private string dirMain = "";
-        private string mediaFile = "ALL-MEDIA.xml";
+        //private int numberOfDisplayCard = 18;
+        private string rootFolder;
+        private string mediaFileName = "ALL-MEDIA.xml";
 
         /// <summary>
         /// Fields
         /// </summary>
-        List<Control> controlList = new List<Control>();
         List<Media> medias = new List<Media>();
 
         public fmMain()
         {
             InitializeComponent();
             LoadDataFromXML();
+            
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
@@ -42,20 +44,30 @@ namespace MediaCollector
 
             if (DialogResult.OK == dir.ShowDialog())
             {
-                dirMain = dir.SelectedPath;
+                ClearData(); 
+                rootFolder = dir.SelectedPath;
                 ScanDirectoryForMovies();
 
                 //write media LIST here XML File
                 SaveToXML();
+
+                //add data displayCard Control
+                InitDisplayCardControls();
             }
 
-            //TODO...
-            //add data displayCard Control
+            
+        }
+
+        private void ClearData()
+        {
+            flpMain.Controls.Clear();
+            medias = null; 
+            medias = new List<Media>();
         }
 
         private void SaveToXML() 
         {
-            using (TextWriter writer = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + mediaFile))
+                using (FileStream writer = new FileStream(AppDomain.CurrentDomain.BaseDirectory + mediaFileName, FileMode.Create, FileAccess.Write, FileShare.None))
             {
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Media>));
                 xmlSerializer.Serialize(writer, medias);
@@ -64,9 +76,9 @@ namespace MediaCollector
 
         private void LoadDataFromXML()
         {
-            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + mediaFile))
+            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + mediaFileName))
             {
-                using (FileStream read = new FileStream(AppDomain.CurrentDomain.BaseDirectory + mediaFile, FileMode.Open, FileAccess.Read, FileShare.Read))
+                using (FileStream read = new FileStream(AppDomain.CurrentDomain.BaseDirectory + mediaFileName, FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
                     XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Media>));
                     medias = (List<Media>)xmlSerializer.Deserialize(read);
@@ -76,10 +88,10 @@ namespace MediaCollector
 
         private void ScanDirectoryForMovies()
         {
-            if (Directory.Exists(dirMain))
+            if (Directory.Exists(rootFolder))
             {
-                string[] Medias = Directory.GetDirectories(dirMain);
-                Media.RootFolder = dirMain;
+                string[] Medias = Directory.GetDirectories(rootFolder);
+                Media.RootFolder = rootFolder;
 
 
                 //get media from folder
@@ -121,9 +133,19 @@ namespace MediaCollector
             }
         }
 
+        private void InitDisplayCardControls()
+        {
+            foreach (Media media in medias)
+            {
+                flpMain.Controls.Add(new ctrDisplayCard((Movie)media));
+            }
+        }
 
-
-
+        private void fmMain_Load(object sender, EventArgs e)
+        {
+            LoadDataFromXML();
+            InitDisplayCardControls();
+        }
     }
 }
 

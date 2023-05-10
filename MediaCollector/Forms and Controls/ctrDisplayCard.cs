@@ -18,8 +18,16 @@ namespace MediaCollector.Form
         public ctrDisplayCard(Movie media)
         {
             InitializeComponent();
-
             this.media = media;
+            InitCard();
+        }
+
+        private void InitCard()
+        {
+            pbCover.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbCover.ImageLocation = media.CoverDir;
+            lblTitle.Values.ExtraText = "";
+            lblTitle.Values.Text = media.FolderName;
         }
 
     }

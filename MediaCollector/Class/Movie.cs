@@ -52,5 +52,10 @@ namespace MediaCollector.Class
             info.GetValue("MovieLength", typeof(double));
             info.GetValue("ImagePreviewDir", typeof(string[]));
         }
+
+        ~Movie()
+        {
+
+        }
     }
 }

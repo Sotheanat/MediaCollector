@@ -38,5 +38,11 @@ namespace MediaCollector.Class
         {
             return String.Format("Title: %s, ", FolderName);
         }
+
+        ~Media()
+        {
+
+        }
+        
     }
 }
