@@ -13,6 +13,8 @@ using MediaCollector.Class;
 using System.Xml.Serialization;
 using MediaCollector.Form;
 using System.Runtime.InteropServices;
+using System.Threading;
+using MediaCollector.Forms_and_Controls;
 
 namespace MediaCollector
 {
@@ -31,12 +33,12 @@ namespace MediaCollector
         /// </summary>
         List<Media> medias = new List<Media>();
 
+
         public fmMain()
         {
             InitializeComponent();
-            //LoadDataFromXML();
-            
         }
+
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
@@ -45,6 +47,9 @@ namespace MediaCollector
 
             if (DialogResult.OK == dir.ShowDialog())
             {
+                fmLoadingForm loadingForm = new fmLoadingForm();
+                loadingForm.Show();
+
                 ClearData(); 
                 rootFolder = dir.SelectedPath;
                 ScanDirectoryForMovies();
@@ -54,6 +59,8 @@ namespace MediaCollector
 
                 //add data displayCard Control
                 InitDisplayCardControls();
+
+                loadingForm.Close();
             }
 
             
@@ -149,8 +156,13 @@ namespace MediaCollector
 
         private void fmMain_Load(object sender, EventArgs e)
         {
+            fmLoadingForm loadingForm = new fmLoadingForm();
+            loadingForm.Show();
+
             LoadDataFromXML();
             InitDisplayCardControls();
+
+            loadingForm.Close();
         }
 
         private void txtSearch_Enter(object sender, EventArgs e)
@@ -199,15 +211,14 @@ namespace MediaCollector
 
         private void pbLoading_Click(object sender, EventArgs e)
         {
-            flpMain.ScrollControlIntoView(flpMain.Controls[0]);
+            if(((MouseEventArgs)e).Button == MouseButtons.Left)
+                flpMain.ScrollControlIntoView(flpMain.Controls[0]);
          }
 
         private void pbLoading_DoubleClick(object sender, EventArgs e)
         {
             flpMain.ScrollControlIntoView(flpMain.Controls[flpMain.Controls.Count - 1]);
         }
-
-
     }
 }
 

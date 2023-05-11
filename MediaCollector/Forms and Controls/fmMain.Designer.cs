@@ -33,8 +33,9 @@
             this.pnMenu = new System.Windows.Forms.Panel();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.pbHome = new System.Windows.Forms.PictureBox();
-            this.btnLoad = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnSetting = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnLoad = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.bgwLoading = new System.ComponentModel.BackgroundWorker();
             this.pnMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbHome)).BeginInit();
             this.SuspendLayout();
@@ -98,6 +99,16 @@
             this.pbHome.Click += new System.EventHandler(this.pbLoading_Click);
             this.pbHome.DoubleClick += new System.EventHandler(this.pbLoading_DoubleClick);
             // 
+            // btnSetting
+            // 
+            this.btnSetting.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSetting.Location = new System.Drawing.Point(3, 811);
+            this.btnSetting.Name = "btnSetting";
+            this.btnSetting.Size = new System.Drawing.Size(167, 26);
+            this.btnSetting.TabIndex = 0;
+            this.btnSetting.Values.Text = "Setting";
+            // 
             // btnLoad
             // 
             this.btnLoad.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -109,15 +120,8 @@
             this.btnLoad.Values.Text = "Load";
             this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
-            // btnSetting
+            // bgwLoading
             // 
-            this.btnSetting.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSetting.Location = new System.Drawing.Point(3, 811);
-            this.btnSetting.Name = "btnSetting";
-            this.btnSetting.Size = new System.Drawing.Size(167, 26);
-            this.btnSetting.TabIndex = 0;
-            this.btnSetting.Values.Text = "Setting";
             // 
             // fmMain
             // 
@@ -133,13 +137,16 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.StateCommon.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.None;
+            this.StateCommon.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.StateCommon.Border.Rounding = 11;
             this.StateCommon.Header.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.StateCommon.Header.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.StateCommon.Header.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.StateCommon.Header.ButtonEdgeInset = 11;
             this.StateCommon.Header.Content.Padding = new System.Windows.Forms.Padding(15, -1, -1, -1);
             this.Text = "Media Collector";
@@ -159,6 +166,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnSetting;
         private System.Windows.Forms.PictureBox pbHome;
         private System.Windows.Forms.TextBox txtSearch;
+        private System.ComponentModel.BackgroundWorker bgwLoading;
     }
 }
 

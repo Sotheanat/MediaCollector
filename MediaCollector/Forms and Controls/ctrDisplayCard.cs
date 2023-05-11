@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using WMPLib;
 
 namespace MediaCollector.Form
 {
@@ -53,7 +54,12 @@ namespace MediaCollector.Form
 
             if(rightClick.Button == MouseButtons.Right) 
             {
-                ctmRightClick.Items["size"].Text = (new FileInfo(movie.FileDir).Length / 1024 / 1024/ 1024).ToString() + " GB" ;
+                double durationInMinutes = new WindowsMediaPlayer().newMedia(movie.FileDir).duration/60;
+                int hours = (int)durationInMinutes / 60;
+                int minutes = (int)durationInMinutes % 60;
+
+
+                ctmRightClick.Items["size"].Text = (new FileInfo(movie.FileDir).Length / (1024*1024)).ToString() + " MB" + " | " + hours + " hr " + minutes + " minute";
                 ctmRightClick.Show(pbCover, rightClick.Location);
             }
         }
@@ -69,38 +75,52 @@ namespace MediaCollector.Form
 
         private void delete_Click(object sender, EventArgs e)
         {
-            if (Directory.Exists(movie.FolderDir))
+            DialogResult isYes = MessageBox.Show("Please comfirm the deletion.", "Comfirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (isYes == DialogResult.Yes)
             {
-                // Move the directory and its contents to the recycle bin
-                FileSystem.DeleteDirectory(movie.FolderDir, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
-
-
-                //delete a node XML File
-                // Load the XML file into an XmlDocument
-                XmlDocument xmlDoc = new XmlDocument();
-                xmlDoc.Load(AppDomain.CurrentDomain.BaseDirectory + "ALL-MEDIA.xml");
-
-                // Find the node with the specified folder name
-                XmlNode nodeToDelete = xmlDoc.SelectSingleNode($"//Media[FolderName='{movie.FolderName}']");
-
-                // Delete the node if it exists
-                if (nodeToDelete != null)
+                if (Directory.Exists(movie.FolderDir))
                 {
-                    nodeToDelete.ParentNode.RemoveChild(nodeToDelete);
-                    xmlDoc.Save(AppDomain.CurrentDomain.BaseDirectory + "ALL-MEDIA.xml");
+                    // Move the directory and its contents to the recycle bin
+                    FileSystem.DeleteDirectory(movie.FolderDir, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
+
+
+                    //delete a node XML File
+                    // Load the XML file into an XmlDocument
+                    XmlDocument xmlDoc = new XmlDocument();
+                    xmlDoc.Load(AppDomain.CurrentDomain.BaseDirectory + "ALL-MEDIA.xml");
+
+                    // Find the node with the specified folder name
+                    XmlNode nodeToDelete = xmlDoc.SelectSingleNode($"//Media[FolderName='{movie.FolderName}']");
+
+                    // Delete the node if it exists
+                    if (nodeToDelete != null)
+                    {
+                        nodeToDelete.ParentNode.RemoveChild(nodeToDelete);
+                        xmlDoc.Save(AppDomain.CurrentDomain.BaseDirectory + "ALL-MEDIA.xml");
+                    }
+
+                    // Save the XmlDocument back to the file
+                    xmlDoc.Save("ALL-MEDIA.xml");
+
+
+
+                    // hide Card
+                    this.Visible = false;
                 }
-
-                // Save the XmlDocument back to the file
-                xmlDoc.Save("ALL-MEDIA.xml");
-
-
-
-                // hide Card
-                this.Visible = false;
+                else
+                {
+                    MessageBox.Show($"Directory {movie.FolderDir} does not exist.", "Deletion Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+        }
+
+        private void viewCover_Click(object sender, EventArgs e)
+        {
+            using (Process movieOpener = new Process())
             {
-                MessageBox.Show($"Directory {movie.FolderDir} does not exist.", "Deletion Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                movieOpener.StartInfo.FileName = movie.CoverDir;
+                movieOpener.Start();
             }
         }
     }

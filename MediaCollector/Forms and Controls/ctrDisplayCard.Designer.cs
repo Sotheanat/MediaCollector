@@ -37,6 +37,7 @@
             this.delete = new System.Windows.Forms.ToolStripMenuItem();
             this.size = new System.Windows.Forms.ToolStripMenuItem();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.viewCover = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pbCover)).BeginInit();
             this.ctmRightClick.SuspendLayout();
             this.SuspendLayout();
@@ -64,26 +65,27 @@
             this.openFileLocation,
             this.BreakLine,
             this.delete,
-            this.size});
+            this.size,
+            this.viewCover});
             this.ctmRightClick.Name = "contextMenuStrip1";
-            this.ctmRightClick.Size = new System.Drawing.Size(174, 76);
+            this.ctmRightClick.Size = new System.Drawing.Size(181, 120);
             // 
             // openFileLocation
             // 
             this.openFileLocation.Name = "openFileLocation";
-            this.openFileLocation.Size = new System.Drawing.Size(173, 22);
+            this.openFileLocation.Size = new System.Drawing.Size(180, 22);
             this.openFileLocation.Text = "Open File Location";
             this.openFileLocation.Click += new System.EventHandler(this.openFileLocation_Click);
             // 
             // BreakLine
             // 
             this.BreakLine.Name = "BreakLine";
-            this.BreakLine.Size = new System.Drawing.Size(170, 6);
+            this.BreakLine.Size = new System.Drawing.Size(177, 6);
             // 
             // delete
             // 
             this.delete.Name = "delete";
-            this.delete.Size = new System.Drawing.Size(173, 22);
+            this.delete.Size = new System.Drawing.Size(180, 22);
             this.delete.Text = "Delete";
             this.delete.Click += new System.EventHandler(this.delete_Click);
             // 
@@ -91,7 +93,7 @@
             // 
             this.size.Enabled = false;
             this.size.Name = "size";
-            this.size.Size = new System.Drawing.Size(173, 22);
+            this.size.Size = new System.Drawing.Size(180, 22);
             this.size.Text = "Size UNKNOWN";
             // 
             // lblTitle
@@ -106,6 +108,13 @@
             this.lblTitle.TabIndex = 1;
             this.lblTitle.Text = "Title";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // viewCover
+            // 
+            this.viewCover.Name = "viewCover";
+            this.viewCover.Size = new System.Drawing.Size(180, 22);
+            this.viewCover.Text = "View Cover";
+            this.viewCover.Click += new System.EventHandler(this.viewCover_Click);
             // 
             // ctrDisplayCard
             // 
@@ -131,5 +140,6 @@
         private System.Windows.Forms.ToolStripMenuItem delete;
         private System.Windows.Forms.ToolStripMenuItem size;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.ToolStripMenuItem viewCover;
     }
 }
