@@ -36,23 +36,23 @@
             this.BreakLine = new System.Windows.Forms.ToolStripSeparator();
             this.delete = new System.Windows.Forms.ToolStripMenuItem();
             this.size = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblTitle = new System.Windows.Forms.Label();
             this.viewCover = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblTitle = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbCover)).BeginInit();
             this.ctmRightClick.SuspendLayout();
             this.SuspendLayout();
             // 
             // pbCover
             // 
-            this.pbCover.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbCover.BackColor = System.Drawing.Color.DarkKhaki;
+            this.pbCover.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(167)))), ((int)(((byte)(177)))));
             this.pbCover.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbCover.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbCover.Dock = System.Windows.Forms.DockStyle.Top;
             this.pbCover.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbCover.InitialImage")));
-            this.pbCover.Location = new System.Drawing.Point(3, 3);
+            this.pbCover.Location = new System.Drawing.Point(0, 0);
             this.pbCover.Name = "pbCover";
-            this.pbCover.Size = new System.Drawing.Size(359, 224);
+            this.pbCover.Padding = new System.Windows.Forms.Padding(1);
+            this.pbCover.Size = new System.Drawing.Size(365, 240);
             this.pbCover.TabIndex = 0;
             this.pbCover.TabStop = false;
             this.pbCover.Click += new System.EventHandler(this.pbCover_Click);
@@ -68,24 +68,24 @@
             this.size,
             this.viewCover});
             this.ctmRightClick.Name = "contextMenuStrip1";
-            this.ctmRightClick.Size = new System.Drawing.Size(181, 120);
+            this.ctmRightClick.Size = new System.Drawing.Size(174, 98);
             // 
             // openFileLocation
             // 
             this.openFileLocation.Name = "openFileLocation";
-            this.openFileLocation.Size = new System.Drawing.Size(180, 22);
+            this.openFileLocation.Size = new System.Drawing.Size(173, 22);
             this.openFileLocation.Text = "Open File Location";
             this.openFileLocation.Click += new System.EventHandler(this.openFileLocation_Click);
             // 
             // BreakLine
             // 
             this.BreakLine.Name = "BreakLine";
-            this.BreakLine.Size = new System.Drawing.Size(177, 6);
+            this.BreakLine.Size = new System.Drawing.Size(170, 6);
             // 
             // delete
             // 
             this.delete.Name = "delete";
-            this.delete.Size = new System.Drawing.Size(180, 22);
+            this.delete.Size = new System.Drawing.Size(173, 22);
             this.delete.Text = "Delete";
             this.delete.Click += new System.EventHandler(this.delete_Click);
             // 
@@ -93,34 +93,34 @@
             // 
             this.size.Enabled = false;
             this.size.Name = "size";
-            this.size.Size = new System.Drawing.Size(180, 22);
+            this.size.Size = new System.Drawing.Size(173, 22);
             this.size.Text = "Size UNKNOWN";
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(3, 230);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(359, 33);
-            this.lblTitle.TabIndex = 1;
-            this.lblTitle.Text = "Title";
-            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // viewCover
             // 
             this.viewCover.Name = "viewCover";
-            this.viewCover.Size = new System.Drawing.Size(180, 22);
+            this.viewCover.Size = new System.Drawing.Size(173, 22);
             this.viewCover.Text = "View Cover";
             this.viewCover.Click += new System.EventHandler(this.viewCover_Click);
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(226)))), ((int)(((byte)(211)))));
+            this.lblTitle.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.ForeColor = System.Drawing.Color.Black;
+            this.lblTitle.Location = new System.Drawing.Point(0, 243);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(365, 23);
+            this.lblTitle.TabIndex = 1;
+            this.lblTitle.Text = "Title";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ctrDisplayCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.OliveDrab;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(124)))), ((int)(((byte)(142)))));
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.pbCover);
             this.Name = "ctrDisplayCard";
