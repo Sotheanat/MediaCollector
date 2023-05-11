@@ -48,6 +48,7 @@
     <Reference Include="ComponentFactory.Krypton.Workspace">
       <HintPath>..\..\..\..\OneDrive\Desktop\TestMovies\Krypton-master\Krypton-master\Bin\ComponentFactory.Krypton.Workspace.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />

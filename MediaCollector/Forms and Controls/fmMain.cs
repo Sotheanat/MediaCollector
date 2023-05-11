@@ -12,6 +12,7 @@ using ComponentFactory.Krypton.Toolkit;
 using MediaCollector.Class;
 using System.Xml.Serialization;
 using MediaCollector.Form;
+using System.Runtime.InteropServices;
 
 namespace MediaCollector
 {
@@ -152,11 +153,6 @@ namespace MediaCollector
             InitDisplayCardControls();
         }
 
-
-
-
-        // Create A form for search so that searching process use less RAM
-        //START FROM HERE
         private void txtSearch_Enter(object sender, EventArgs e)
         {
             if (txtSearch.Text.Equals("Search"))
@@ -181,7 +177,7 @@ namespace MediaCollector
         }
 
 
-        // Search by hide Controls
+        // Search by scrolling to the Controls
         private void txtSearch_KeyUp(object sender, KeyEventArgs e)
         {
             
@@ -211,7 +207,7 @@ namespace MediaCollector
             flpMain.ScrollControlIntoView(flpMain.Controls[flpMain.Controls.Count - 1]);
         }
 
-        // HERE FROM ABOVE
+
     }
 }
 

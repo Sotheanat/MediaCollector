@@ -31,13 +31,12 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctrDisplayCard));
             this.pbCover = new System.Windows.Forms.PictureBox();
-            this.lblTitle = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.ctmRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.openFileLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
-            this.renameToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.propertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileLocation = new System.Windows.Forms.ToolStripMenuItem();
+            this.BreakLine = new System.Windows.Forms.ToolStripSeparator();
+            this.delete = new System.Windows.Forms.ToolStripMenuItem();
+            this.size = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblTitle = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbCover)).BeginInit();
             this.ctmRightClick.SuspendLayout();
             this.SuspendLayout();
@@ -55,58 +54,58 @@
             this.pbCover.Size = new System.Drawing.Size(359, 224);
             this.pbCover.TabIndex = 0;
             this.pbCover.TabStop = false;
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblTitle.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.TitleControl;
-            this.lblTitle.Location = new System.Drawing.Point(0, 237);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(365, 29);
-            this.lblTitle.TabIndex = 1;
-            this.lblTitle.Values.ExtraText = "Length";
-            this.lblTitle.Values.Text = "Title";
+            this.pbCover.Click += new System.EventHandler(this.pbCover_Click);
+            this.pbCover.DoubleClick += new System.EventHandler(this.pbCover_DoubleClick);
             // 
             // ctmRightClick
             // 
             this.ctmRightClick.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ctmRightClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openFileLocationToolStripMenuItem,
-            this.renameToolStripMenuItem,
-            this.renameToolStripMenuItem1,
-            this.deleteToolStripMenuItem,
-            this.propertiesToolStripMenuItem});
+            this.openFileLocation,
+            this.BreakLine,
+            this.delete,
+            this.size});
             this.ctmRightClick.Name = "contextMenuStrip1";
-            this.ctmRightClick.Size = new System.Drawing.Size(174, 98);
+            this.ctmRightClick.Size = new System.Drawing.Size(174, 76);
             // 
-            // openFileLocationToolStripMenuItem
+            // openFileLocation
             // 
-            this.openFileLocationToolStripMenuItem.Name = "openFileLocationToolStripMenuItem";
-            this.openFileLocationToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.openFileLocationToolStripMenuItem.Text = "Open File Location";
+            this.openFileLocation.Name = "openFileLocation";
+            this.openFileLocation.Size = new System.Drawing.Size(173, 22);
+            this.openFileLocation.Text = "Open File Location";
+            this.openFileLocation.Click += new System.EventHandler(this.openFileLocation_Click);
             // 
-            // renameToolStripMenuItem
+            // BreakLine
             // 
-            this.renameToolStripMenuItem.Name = "renameToolStripMenuItem";
-            this.renameToolStripMenuItem.Size = new System.Drawing.Size(170, 6);
+            this.BreakLine.Name = "BreakLine";
+            this.BreakLine.Size = new System.Drawing.Size(170, 6);
             // 
-            // renameToolStripMenuItem1
+            // delete
             // 
-            this.renameToolStripMenuItem1.Name = "renameToolStripMenuItem1";
-            this.renameToolStripMenuItem1.Size = new System.Drawing.Size(173, 22);
-            this.renameToolStripMenuItem1.Text = "Rename";
+            this.delete.Name = "delete";
+            this.delete.Size = new System.Drawing.Size(173, 22);
+            this.delete.Text = "Delete";
+            this.delete.Click += new System.EventHandler(this.delete_Click);
             // 
-            // deleteToolStripMenuItem
+            // size
             // 
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.deleteToolStripMenuItem.Text = "Delete";
+            this.size.Enabled = false;
+            this.size.Name = "size";
+            this.size.Size = new System.Drawing.Size(173, 22);
+            this.size.Text = "Size UNKNOWN";
             // 
-            // propertiesToolStripMenuItem
+            // lblTitle
             // 
-            this.propertiesToolStripMenuItem.Name = "propertiesToolStripMenuItem";
-            this.propertiesToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.propertiesToolStripMenuItem.Text = "Properties";
+            this.lblTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(3, 230);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(359, 33);
+            this.lblTitle.TabIndex = 1;
+            this.lblTitle.Text = "Title";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ctrDisplayCard
             // 
@@ -120,19 +119,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbCover)).EndInit();
             this.ctmRightClick.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.PictureBox pbCover;
-        private ComponentFactory.Krypton.Toolkit.KryptonLabel lblTitle;
         private System.Windows.Forms.ContextMenuStrip ctmRightClick;
-        private System.Windows.Forms.ToolStripMenuItem openFileLocationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator renameToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem propertiesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openFileLocation;
+        private System.Windows.Forms.ToolStripSeparator BreakLine;
+        private System.Windows.Forms.ToolStripMenuItem delete;
+        private System.Windows.Forms.ToolStripMenuItem size;
+        private System.Windows.Forms.Label lblTitle;
     }
 }

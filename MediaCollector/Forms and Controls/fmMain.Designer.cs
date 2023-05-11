@@ -60,8 +60,8 @@
             this.pnMenu.BackColor = System.Drawing.Color.IndianRed;
             this.pnMenu.Controls.Add(this.txtSearch);
             this.pnMenu.Controls.Add(this.pbHome);
-            this.pnMenu.Controls.Add(this.btnLoad);
             this.pnMenu.Controls.Add(this.btnSetting);
+            this.pnMenu.Controls.Add(this.btnLoad);
             this.pnMenu.Location = new System.Drawing.Point(12, 0);
             this.pnMenu.Name = "pnMenu";
             this.pnMenu.Size = new System.Drawing.Size(173, 849);
@@ -70,11 +70,11 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.ForeColor = System.Drawing.Color.DarkGray;
-            this.txtSearch.Location = new System.Drawing.Point(3, 12);
+            this.txtSearch.Location = new System.Drawing.Point(3, 17);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(148, 26);
+            this.txtSearch.Size = new System.Drawing.Size(167, 29);
             this.txtSearch.TabIndex = 3;
             this.txtSearch.Text = "Search";
             this.txtSearch.Enter += new System.EventHandler(this.txtSearch_Enter);
@@ -89,9 +89,9 @@
             this.pbHome.ErrorImage = null;
             this.pbHome.Image = ((System.Drawing.Image)(resources.GetObject("pbHome.Image")));
             this.pbHome.InitialImage = null;
-            this.pbHome.Location = new System.Drawing.Point(3, 64);
+            this.pbHome.Location = new System.Drawing.Point(0, 64);
             this.pbHome.Name = "pbHome";
-            this.pbHome.Size = new System.Drawing.Size(167, 79);
+            this.pbHome.Size = new System.Drawing.Size(173, 82);
             this.pbHome.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbHome.TabIndex = 2;
             this.pbHome.TabStop = false;
@@ -104,7 +104,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLoad.Location = new System.Drawing.Point(3, 753);
             this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(167, 43);
+            this.btnLoad.Size = new System.Drawing.Size(167, 52);
             this.btnLoad.TabIndex = 1;
             this.btnLoad.Values.Text = "Load";
             this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
