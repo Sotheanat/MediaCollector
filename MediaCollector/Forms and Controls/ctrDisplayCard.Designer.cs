@@ -44,15 +44,17 @@
             // 
             // pbCover
             // 
+            this.pbCover.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pbCover.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(167)))), ((int)(((byte)(177)))));
             this.pbCover.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbCover.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbCover.Dock = System.Windows.Forms.DockStyle.Top;
             this.pbCover.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbCover.InitialImage")));
             this.pbCover.Location = new System.Drawing.Point(0, 0);
             this.pbCover.Name = "pbCover";
             this.pbCover.Padding = new System.Windows.Forms.Padding(1);
-            this.pbCover.Size = new System.Drawing.Size(365, 240);
+            this.pbCover.Size = new System.Drawing.Size(483, 288);
             this.pbCover.TabIndex = 0;
             this.pbCover.TabStop = false;
             this.pbCover.Click += new System.EventHandler(this.pbCover_Click);
@@ -109,9 +111,9 @@
             this.lblTitle.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.Black;
-            this.lblTitle.Location = new System.Drawing.Point(0, 243);
+            this.lblTitle.Location = new System.Drawing.Point(0, 291);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(365, 23);
+            this.lblTitle.Size = new System.Drawing.Size(483, 23);
             this.lblTitle.TabIndex = 1;
             this.lblTitle.Text = "Title";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -124,7 +126,7 @@
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.pbCover);
             this.Name = "ctrDisplayCard";
-            this.Size = new System.Drawing.Size(365, 266);
+            this.Size = new System.Drawing.Size(483, 314);
             ((System.ComponentModel.ISupportInitialize)(this.pbCover)).EndInit();
             this.ctmRightClick.ResumeLayout(false);
             this.ResumeLayout(false);

@@ -59,7 +59,7 @@ namespace MediaCollector.Form
                 int minutes = (int)durationInMinutes % 60;
 
 
-                ctmRightClick.Items["size"].Text = (new FileInfo(movie.FileDir).Length / (1024*1024)).ToString() + " MB" + " | " + hours + " hr " + minutes + " minute";
+                ctmRightClick.Items["size"].Text = (new FileInfo(movie.FileDir).Length / (1024*1024)).ToString() + " MB" + " |  " + hours + "hr " + minutes + " min";
                 ctmRightClick.Show(pbCover, rightClick.Location);
             }
         }

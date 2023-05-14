@@ -75,7 +75,7 @@ namespace MediaCollector
 
         private void SaveToXML() 
         {
-                using (FileStream writer = new FileStream(AppDomain.CurrentDomain.BaseDirectory + mediaFileName, FileMode.Create, FileAccess.Write, FileShare.None))
+            using (FileStream writer = new FileStream(AppDomain.CurrentDomain.BaseDirectory + mediaFileName, FileMode.Create, FileAccess.Write, FileShare.None))
             {
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Media>));
                 xmlSerializer.Serialize(writer, medias);

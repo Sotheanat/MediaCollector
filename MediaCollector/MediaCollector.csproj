@@ -95,6 +95,12 @@
     <Compile Include="Forms and Controls\fmSearch.Designer.cs">
       <DependentUpon>fmSearch.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms and Controls\fmSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms and Controls\fmSetting.Designer.cs">
+      <DependentUpon>fmSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms and Controls\LoadingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms and Controls\fmSearch.resx">
       <DependentUpon>fmSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms and Controls\fmSetting.resx">
+      <DependentUpon>fmSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms and Controls\LoadingForm.resx">
       <DependentUpon>LoadingForm.cs</DependentUpon>

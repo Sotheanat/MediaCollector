@@ -44,9 +44,9 @@ namespace MediaCollector.Class
         public Movie(SerializationInfo info, StreamingContext context): 
             base(info.GetValue("CoverDir", typeof(string)).ToString(), info.GetValue("FolderDir", typeof(string)).ToString(), info.GetValue("FolderName", typeof(string)).ToString())
         {
-            info.GetValue("CoverDir", typeof(string));
-            info.GetValue("FolderDir", typeof(string));
-            info.GetValue("FolderName", typeof(string));
+            //info.GetValue("CoverDir", typeof(string));
+            //info.GetValue("FolderDir", typeof(string));
+            //info.GetValue("FolderName", typeof(string));
 
             info.GetValue("FileDir", typeof(string));
             info.GetValue("MovieLength", typeof(double));
