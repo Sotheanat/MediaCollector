@@ -9,6 +9,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
@@ -122,6 +123,23 @@ namespace MediaCollector.Form
                 movieOpener.StartInfo.FileName = movie.CoverDir;
                 movieOpener.Start();
             }
+        }
+
+
+        public void IndicateTheResult()
+        {
+            lblTitle.BackColor = Color.Yellow;
+            Thread.Sleep(300);
+            lblTitle.BackColor = Color.FromArgb(182, 226, 211);
+            Thread.Sleep(300);
+            lblTitle.BackColor = Color.Yellow;
+            Thread.Sleep(300);
+            lblTitle.BackColor = Color.FromArgb(182, 226, 211);
+            Thread.Sleep(300);
+            lblTitle.BackColor = Color.Yellow;
+            Thread.Sleep(300);
+            lblTitle.BackColor = Color.FromArgb(182, 226, 211);
+
         }
     }
 }

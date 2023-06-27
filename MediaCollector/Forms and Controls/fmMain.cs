@@ -23,6 +23,7 @@ namespace MediaCollector
 
         /// <summary>
         /// Program setting 
+         
         /// </summary>
         //private int numberOfDisplayCard = 18;
         private string rootFolder;
@@ -143,9 +144,29 @@ namespace MediaCollector
 
         private void InitDisplayCardControls()
         {
+            Settings mySetting = new Settings();
+
+            //get cardSize from xml -> mySetting
+            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "ProgramSettings.xml"))
+            {
+                using (FileStream read = new FileStream(AppDomain.CurrentDomain.BaseDirectory + "ProgramSettings.xml", FileMode.Open, FileAccess.Read, FileShare.Read))
+                {
+                    XmlSerializer xmlSerializer = new XmlSerializer(typeof(Settings));
+                    mySetting = (Settings)xmlSerializer.Deserialize(read);
+                }
+            }
+
             foreach (Media media in medias)
             {
-                flpMain.Controls.Add(new ctrDisplayCard((Movie)media));
+
+            flpMain.Controls.Add
+                (
+                    new ctrDisplayCard((Movie)media)
+                    {
+                        Width = mySetting.cardSize.Width,
+                        Height = mySetting.cardSize.Height
+                    }
+                );
             }
 
             flpMain.Focus();
@@ -203,7 +224,15 @@ namespace MediaCollector
                     ctrDisplayCard card = ctrl as ctrDisplayCard;
 
                     if (card.Contains(searchStr.ToLower()))
-                    { flpMain.ScrollControlIntoView(card); break; }
+                    { 
+                        flpMain.ScrollControlIntoView(card);
+
+
+                        //new Thread(Indicate => card.IndicateTheResult()).Start();                   //not controlled
+                        ThreadPool.QueueUserWorkItem(Indicate => card.IndicateTheResult());  //better 
+
+                        break; 
+                    }
                 }
             }
         }
@@ -218,6 +247,11 @@ namespace MediaCollector
         private void pbLoading_DoubleClick(object sender, EventArgs e)
         {
             flpMain.ScrollControlIntoView(flpMain.Controls[flpMain.Controls.Count - 1]);
+        }
+
+        private void btnSetting_Click(object sender, EventArgs e)
+        {
+            new fmSetting().ShowDialog();
         }
     }
 }

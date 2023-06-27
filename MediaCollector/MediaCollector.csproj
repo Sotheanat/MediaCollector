@@ -69,8 +69,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\eNumerationSetting.cs" />
     <Compile Include="Class\Media.cs" />
     <Compile Include="Class\Movie.cs" />
+    <Compile Include="Class\Settings.cs" />
     <Compile Include="Forms and Controls\ctrDisplayCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
