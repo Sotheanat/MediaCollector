@@ -1,5 +1,5 @@
 # MediaCollector
-Introducing MediaCollector: Your Ultimate Movie Collection Organizer!
+<bold>Introducing MediaCollector: Your Ultimate Movie Collection Organizer!</bold>
 
 Are you tired of spending endless hours searching for your favorite movies? Do you want a convenient way to organize and enjoy your movie collection? Look no further! MediaCollector is here to revolutionize the way you manage and access your movies!
 
