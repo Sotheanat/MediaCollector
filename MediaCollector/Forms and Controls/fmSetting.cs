@@ -27,30 +27,31 @@ namespace MediaCollector.Forms_and_Controls
         private void btnApply_Click(object sender, EventArgs e)
         {
             Size size= new Size();
-            int s = 2;
+            int eNumCardSize = 2;
+            int itemPerPage = Convert.ToInt32(numCard.Value);
 
                 if (rdSmall.Checked)
                 {
                     size.Width = 248;
                     size.Height = 177;
-                s = (int)eNumerationSetting.CardSize.SMALL;
+                eNumCardSize = (int)DefaultSettings.CardSize.SMALL;
                 }
                 else if (rdMedium.Checked)
                 {
                     size.Width = 365;
                     size.Height = 266;
-                    s = (int)eNumerationSetting.CardSize.MEDIUM;
+                    eNumCardSize = (int)DefaultSettings.CardSize.MEDIUM;
                 }
                 else if (rdLarge.Checked)
                 {
                     size.Width = 483;
                     size.Height = 314;
-                    s = (int)eNumerationSetting.CardSize.LARGE;
+                    eNumCardSize = (int)DefaultSettings.CardSize.LARGE;
                 }
 
             //Save setting file to XML  
 
-            mySetting = new Settings(size, s);
+            mySetting = new Settings(size.Width,size.Height, eNumCardSize, itemPerPage);
 
             using (FileStream writer = new FileStream(AppDomain.CurrentDomain.BaseDirectory + "ProgramSettings.xml", FileMode.Create, FileAccess.Write, FileShare.None))
             {
@@ -78,22 +79,25 @@ namespace MediaCollector.Forms_and_Controls
 
                 switch (mySetting.eNumCardSize)
                 {
-                    case (int)eNumerationSetting.CardSize.LARGE: 
+                    case (int)DefaultSettings.CardSize.LARGE: 
                         rdLarge.Checked = true;
                         break;
-                    case (int)eNumerationSetting.CardSize.MEDIUM:
+                    case (int)DefaultSettings.CardSize.MEDIUM:
                         rdMedium.Checked = true;
                         break;
-                    case (int)eNumerationSetting.CardSize.SMALL:
+                    case (int)DefaultSettings.CardSize.SMALL:
                         rdSmall.Checked = true;
                         break;
                 }
+
+                numCard.Value= mySetting.itemPerPage;
 
             }
             else
             {
                 rdPink.Checked = true;
                 rdLarge.Checked = true;
+                numCard.Value = 40;
             }
         }
 

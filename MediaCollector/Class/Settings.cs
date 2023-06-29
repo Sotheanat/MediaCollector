@@ -13,18 +13,15 @@ namespace MediaCollector.Class
     public class Settings : ISerializable
     {
         public Size cardSize;
-        public int eNumCardSize = 2;
-
-        public Settings() 
-        {
-            //default is Large
-            cardSize = new Size() { Height = 314, Width = 483 };
-        }
-        public Settings( Size size, int eNumCardSize)
+        public int eNumCardSize;
+        public int itemPerPage;
+ 
+        public Settings() { }
+        public Settings(int W = 483, int H = 314, int eNumCardSize = 2, int iTEM_PER_PAGE = 40)
         {
             this.eNumCardSize = eNumCardSize;
-
-            cardSize = size;
+            cardSize = new Size(W,H);
+            itemPerPage = iTEM_PER_PAGE;
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
@@ -32,12 +29,14 @@ namespace MediaCollector.Class
 
             info.AddValue("CardSize", cardSize);
             info.AddValue("eNumCardSize", eNumCardSize);
+            info.AddValue("iTEM_PER_PAGE", itemPerPage);
         }
 
         public Settings(SerializationInfo info, StreamingContext context)
         {
             cardSize = (Size)info.GetValue("CardSize", typeof(Size));
             eNumCardSize = info.GetInt32("eNumCardSize");
+            itemPerPage = info.GetInt32("iTEM_PER_PAGE");
         }
     }
 }

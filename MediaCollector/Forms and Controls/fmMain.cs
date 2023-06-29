@@ -23,7 +23,8 @@ namespace MediaCollector
 
         /// <summary>
         /// Program setting 
-         
+        Settings mySetting;
+
         /// </summary>
         //private int numberOfDisplayCard = 18;
         private string rootFolder;
@@ -144,8 +145,6 @@ namespace MediaCollector
 
         private void InitDisplayCardControls()
         {
-            Settings mySetting = new Settings();
-
             //get cardSize from xml -> mySetting
             if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "ProgramSettings.xml"))
             {
@@ -155,24 +154,36 @@ namespace MediaCollector
                     mySetting = (Settings)xmlSerializer.Deserialize(read);
                 }
             }
+            else { mySetting = new Settings(DefaultSettings.defaultOrLargeCardSize.Width, DefaultSettings.defaultOrLargeCardSize.Height); }
 
-            foreach (Media media in medias)
+
+
+            //Set up condition for page
+            //Declared at line 260
+            TOTAL_ITEMS = medias.Count;
+            TOTAL_PAGE = (TOTAL_ITEMS/mySetting.itemPerPage);
+            CURRENT_PAGE = 0;
+
+            for (int i = 0; i < Math.Min(medias.Count, mySetting.itemPerPage); i++)
             {
-
-            flpMain.Controls.Add
-                (
-                    new ctrDisplayCard((Movie)media)
-                    {
-                        Width = mySetting.cardSize.Width,
-                        Height = mySetting.cardSize.Height
-                    }
-                );
+                flpMain.Controls.Add(
+                        new ctrDisplayCard((Movie)medias[i])
+                        {
+                            Width = mySetting.cardSize.Width,
+                            Height = mySetting.cardSize.Height
+                        }
+                    );
             }
 
-            flpMain.Focus();
+            btnPrevious.Enabled = false;
+            btnNext.Enabled = (TOTAL_PAGE > CURRENT_PAGE);
 
-            if(flpMain.Controls.Count > 0)
-                flpMain.ScrollControlIntoView(flpMain.Controls[flpMain.Controls.Count - 1]);
+            UpdateLablePage();
+
+            //flpMain.Focus();
+            //if(flpMain.Controls.Count > 0)
+            //    flpMain.ScrollControlIntoView(flpMain.Controls[flpMain.Controls.Count - 1]);
+
         }
 
         private void fmMain_Load(object sender, EventArgs e)
@@ -182,7 +193,7 @@ namespace MediaCollector
 
             LoadDataFromXML();
             InitDisplayCardControls();
-
+            
             loadingForm.Close();
         }
 
@@ -237,7 +248,6 @@ namespace MediaCollector
             }
         }
 
-
         private void pbLoading_Click(object sender, EventArgs e)
         {
             if(((MouseEventArgs)e).Button == MouseButtons.Left)
@@ -253,6 +263,73 @@ namespace MediaCollector
         {
             new fmSetting().ShowDialog();
         }
+
+
+
+        //Page variables are all here
+        //
+        /// Item in page
+        //const int ITEM_PER_PAGE ;
+        int TOTAL_ITEMS;
+
+        //page
+        int TOTAL_PAGE;
+        int CURRENT_PAGE;
+
+
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (CURRENT_PAGE < TOTAL_PAGE - 1)
+            {
+                CURRENT_PAGE++;
+                UpdateDisplayedItems();
+            }
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            if (CURRENT_PAGE > 0)
+            {
+                CURRENT_PAGE--;
+                UpdateDisplayedItems();
+            }
+        }
+
+        private void UpdateDisplayedItems()
+        {
+            // Clear the previous controls
+            flpMain.Controls.Clear();
+
+            // Calculate the range of items for the current page
+            int startIndex = CURRENT_PAGE * mySetting.itemPerPage;
+            int endIndex = (CURRENT_PAGE == TOTAL_PAGE - 1) ? Math.Max(startIndex + mySetting.itemPerPage, TOTAL_ITEMS) : Math.Min(startIndex + mySetting.itemPerPage, TOTAL_ITEMS);
+
+            // Add the controls for the current page
+            for (int i = startIndex; i < endIndex; i++)
+            {
+                Media media = medias[i];
+                flpMain.Controls.Add(
+                    new ctrDisplayCard((Movie)media)
+                    {
+                        Width = mySetting.cardSize.Width,
+                        Height = mySetting.cardSize.Height
+                    }
+                );
+            }
+
+            // Enable or disable navigation buttons based on the current page
+            btnNext.Enabled = (CURRENT_PAGE < TOTAL_PAGE-1);
+            btnPrevious.Enabled = (CURRENT_PAGE > 0);
+
+            UpdateLablePage();
+        }
+
+        private void UpdateLablePage()
+        {
+            lblPage.Text = CURRENT_PAGE+1 + "/" + ((TOTAL_PAGE==0)? 1: TOTAL_PAGE);
+        }
+
     }
 }
 

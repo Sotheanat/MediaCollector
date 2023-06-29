@@ -34,14 +34,18 @@
             this.rdMedium = new System.Windows.Forms.RadioButton();
             this.rdSmall = new System.Windows.Forms.RadioButton();
             this.grpTheme = new System.Windows.Forms.GroupBox();
+            this.rdDefaultColor = new System.Windows.Forms.RadioButton();
             this.rdZuper = new System.Windows.Forms.RadioButton();
             this.rdDark = new System.Windows.Forms.RadioButton();
             this.rdRetro = new System.Windows.Forms.RadioButton();
             this.rdPink = new System.Windows.Forms.RadioButton();
             this.btnApply = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.rdDefaultColor = new System.Windows.Forms.RadioButton();
+            this.grpCard = new System.Windows.Forms.GroupBox();
+            this.numCard = new System.Windows.Forms.NumericUpDown();
             this.grpCardSize.SuspendLayout();
             this.grpTheme.SuspendLayout();
+            this.grpCard.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numCard)).BeginInit();
             this.SuspendLayout();
             // 
             // grpCardSize
@@ -119,10 +123,22 @@
             this.grpTheme.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(167)))), ((int)(((byte)(177)))));
             this.grpTheme.Location = new System.Drawing.Point(12, 140);
             this.grpTheme.Name = "grpTheme";
-            this.grpTheme.Size = new System.Drawing.Size(173, 180);
+            this.grpTheme.Size = new System.Drawing.Size(90, 180);
             this.grpTheme.TabIndex = 3;
             this.grpTheme.TabStop = false;
             this.grpTheme.Text = "Theme";
+            // 
+            // rdDefaultColor
+            // 
+            this.rdDefaultColor.AutoSize = true;
+            this.rdDefaultColor.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdDefaultColor.Location = new System.Drawing.Point(6, 136);
+            this.rdDefaultColor.Name = "rdDefaultColor";
+            this.rdDefaultColor.Size = new System.Drawing.Size(67, 21);
+            this.rdDefaultColor.TabIndex = 5;
+            this.rdDefaultColor.TabStop = true;
+            this.rdDefaultColor.Text = "Default";
+            this.rdDefaultColor.UseVisualStyleBackColor = true;
             // 
             // rdZuper
             // 
@@ -184,17 +200,51 @@
             this.btnApply.Values.Text = "Apply";
             this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
-            // rdDefaultColor
+            // grpCard
             // 
-            this.rdDefaultColor.AutoSize = true;
-            this.rdDefaultColor.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdDefaultColor.Location = new System.Drawing.Point(6, 136);
-            this.rdDefaultColor.Name = "rdDefaultColor";
-            this.rdDefaultColor.Size = new System.Drawing.Size(67, 21);
-            this.rdDefaultColor.TabIndex = 5;
-            this.rdDefaultColor.TabStop = true;
-            this.rdDefaultColor.Text = "Default";
-            this.rdDefaultColor.UseVisualStyleBackColor = true;
+            this.grpCard.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.grpCard.Controls.Add(this.numCard);
+            this.grpCard.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpCard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(167)))), ((int)(((byte)(177)))));
+            this.grpCard.Location = new System.Drawing.Point(108, 140);
+            this.grpCard.Name = "grpCard";
+            this.grpCard.Size = new System.Drawing.Size(77, 103);
+            this.grpCard.TabIndex = 6;
+            this.grpCard.TabStop = false;
+            this.grpCard.Text = "Card Number";
+            // 
+            // numCard
+            // 
+            this.numCard.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.numCard.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.numCard.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numCard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(167)))), ((int)(((byte)(177)))));
+            this.numCard.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numCard.Location = new System.Drawing.Point(6, 55);
+            this.numCard.Maximum = new decimal(new int[] {
+            120,
+            0,
+            0,
+            0});
+            this.numCard.Minimum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.numCard.Name = "numCard";
+            this.numCard.ReadOnly = true;
+            this.numCard.Size = new System.Drawing.Size(63, 29);
+            this.numCard.TabIndex = 0;
+            this.numCard.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numCard.Value = new decimal(new int[] {
+            40,
+            0,
+            0,
+            0});
             // 
             // fmSetting
             // 
@@ -202,6 +252,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(197, 364);
+            this.Controls.Add(this.grpCard);
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.grpTheme);
             this.Controls.Add(this.grpCardSize);
@@ -209,22 +260,21 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(167)))), ((int)(((byte)(177)))));
             this.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(167)))), ((int)(((byte)(177)))));
-            this.StateCommon.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(167)))), ((int)(((byte)(177)))));
             this.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(167)))), ((int)(((byte)(177)))));
             this.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.StateCommon.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.StateCommon.Header.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(167)))), ((int)(((byte)(177)))));
             this.StateCommon.Header.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(167)))), ((int)(((byte)(177)))));
-            this.StateCommon.Header.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.Text = "Settting";
             this.Load += new System.EventHandler(this.fmSetting_Load);
             this.grpCardSize.ResumeLayout(false);
             this.grpCardSize.PerformLayout();
             this.grpTheme.ResumeLayout(false);
             this.grpTheme.PerformLayout();
+            this.grpCard.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numCard)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -243,5 +293,7 @@
         private System.Windows.Forms.RadioButton rdZuper;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnApply;
         private System.Windows.Forms.RadioButton rdDefaultColor;
+        private System.Windows.Forms.GroupBox grpCard;
+        private System.Windows.Forms.NumericUpDown numCard;
     }
 }

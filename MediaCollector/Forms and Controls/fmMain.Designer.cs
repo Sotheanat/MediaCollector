@@ -31,11 +31,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fmMain));
             this.flpMain = new System.Windows.Forms.FlowLayoutPanel();
             this.pnMenu = new System.Windows.Forms.Panel();
+            this.btnNext = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnPrevious = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.pbHome = new System.Windows.Forms.PictureBox();
             this.btnSetting = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnLoad = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.bgwLoading = new System.ComponentModel.BackgroundWorker();
+            this.lblPage = new System.Windows.Forms.Label();
             this.pnMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbHome)).BeginInit();
             this.SuspendLayout();
@@ -59,6 +62,9 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.pnMenu.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.pnMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(232)))), ((int)(((byte)(224)))));
+            this.pnMenu.Controls.Add(this.lblPage);
+            this.pnMenu.Controls.Add(this.btnNext);
+            this.pnMenu.Controls.Add(this.btnPrevious);
             this.pnMenu.Controls.Add(this.txtSearch);
             this.pnMenu.Controls.Add(this.pbHome);
             this.pnMenu.Controls.Add(this.btnSetting);
@@ -68,6 +74,27 @@
             this.pnMenu.Size = new System.Drawing.Size(173, 837);
             this.pnMenu.TabIndex = 1;
             this.pnMenu.Click += new System.EventHandler(this.pnMenu_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNext.Location = new System.Drawing.Point(92, 182);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
+            this.btnNext.Size = new System.Drawing.Size(78, 26);
+            this.btnNext.TabIndex = 5;
+            this.btnNext.Values.Text = ">";
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // btnPrevious
+            // 
+            this.btnPrevious.Location = new System.Drawing.Point(3, 182);
+            this.btnPrevious.Name = "btnPrevious";
+            this.btnPrevious.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
+            this.btnPrevious.Size = new System.Drawing.Size(78, 26);
+            this.btnPrevious.TabIndex = 4;
+            this.btnPrevious.Values.Text = "<";
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
             // txtSearch
             // 
@@ -92,9 +119,9 @@
             this.pbHome.ErrorImage = null;
             this.pbHome.Image = ((System.Drawing.Image)(resources.GetObject("pbHome.Image")));
             this.pbHome.InitialImage = null;
-            this.pbHome.Location = new System.Drawing.Point(0, 64);
+            this.pbHome.Location = new System.Drawing.Point(3, 64);
             this.pbHome.Name = "pbHome";
-            this.pbHome.Size = new System.Drawing.Size(173, 82);
+            this.pbHome.Size = new System.Drawing.Size(167, 82);
             this.pbHome.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbHome.TabIndex = 2;
             this.pbHome.TabStop = false;
@@ -124,6 +151,15 @@
             this.btnLoad.TabIndex = 1;
             this.btnLoad.Values.Text = "Load";
             this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+            // 
+            // lblPage
+            // 
+            this.lblPage.AutoSize = true;
+            this.lblPage.Location = new System.Drawing.Point(75, 211);
+            this.lblPage.Name = "lblPage";
+            this.lblPage.Size = new System.Drawing.Size(24, 13);
+            this.lblPage.TabIndex = 6;
+            this.lblPage.Text = "1/3";
             // 
             // fmMain
             // 
@@ -173,6 +209,9 @@
         private System.Windows.Forms.PictureBox pbHome;
         private System.Windows.Forms.TextBox txtSearch;
         private System.ComponentModel.BackgroundWorker bgwLoading;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnNext;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnPrevious;
+        private System.Windows.Forms.Label lblPage;
     }
 }
 

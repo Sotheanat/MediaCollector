@@ -104,8 +104,6 @@ namespace MediaCollector.Form
                     // Save the XmlDocument back to the file
                     xmlDoc.Save("ALL-MEDIA.xml");
 
-
-
                     // hide Card
                     this.Visible = false;
                 }
