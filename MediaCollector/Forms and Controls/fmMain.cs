@@ -33,7 +33,7 @@ namespace MediaCollector
         /// <summary>
         /// Fields
         /// </summary>
-        List<Media> medias = new List<Media>();
+        List<Media> mediaList = new List<Media>();
 
 
         public fmMain()
@@ -71,8 +71,8 @@ namespace MediaCollector
         private void ClearData()
         {
             flpMain.Controls.Clear();
-            medias = null; 
-            medias = new List<Media>();
+            mediaList = null; 
+            mediaList = new List<Media>();
         }
 
         private void SaveToXML() 
@@ -80,7 +80,7 @@ namespace MediaCollector
             using (FileStream writer = new FileStream(AppDomain.CurrentDomain.BaseDirectory + mediaFileName, FileMode.Create, FileAccess.Write, FileShare.None))
             {
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Media>));
-                xmlSerializer.Serialize(writer, medias);
+                xmlSerializer.Serialize(writer, mediaList);
             }
         }
 
@@ -91,7 +91,7 @@ namespace MediaCollector
                 using (FileStream read = new FileStream(AppDomain.CurrentDomain.BaseDirectory + mediaFileName, FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
                     XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Media>));
-                    medias = (List<Media>)xmlSerializer.Deserialize(read);
+                    mediaList = (List<Media>)xmlSerializer.Deserialize(read);
                 }
             }
         }
@@ -123,12 +123,28 @@ namespace MediaCollector
                             string movDir = movieFileDir.ToArray()[0];
                             string imgDir = imageFileDir.ToArray()[0];
 
-                            //Low performace
-                            //double duration = new WindowsMediaPlayer().newMedia(movDir).duration;
-                            // previewImgDir = ...
+                            // create movie instance
+                            var newMovie = new Movie(
+                                imgDir,
+                                media,
+                                media.Remove(0, media.LastIndexOf('\\') + 1),
+                                movDir,
+                                0.00,
+                                null
+                            );
 
-                            //add movie to list
-                            medias.Add(new Movie(imgDir, media, media.Remove(0, media.LastIndexOf('\\') + 1), movDir, 0.00, null));
+
+                            // insert into mediaList at sorted position by FolderName, case insensitive
+                            int insertIndex = mediaList.FindIndex(m => string.Compare(m.FolderName, newMovie.FolderName, StringComparison.OrdinalIgnoreCase) > 0);
+
+                            if (insertIndex == -1)
+                            {
+                                mediaList.Add(newMovie);
+                            }
+                            else
+                            {
+                                mediaList.Insert(insertIndex, newMovie);
+                            }
 
                         }
                         /**
@@ -160,14 +176,14 @@ namespace MediaCollector
 
             //Set up condition for page
             //Declared at line 260
-            TOTAL_ITEMS = medias.Count;
+            TOTAL_ITEMS = mediaList.Count;
             TOTAL_PAGE = (TOTAL_ITEMS/mySetting.itemPerPage);
             CURRENT_PAGE = 0;
 
-            for (int i = 0; i < Math.Min(medias.Count, mySetting.itemPerPage); i++)
+            for (int i = 0; i < Math.Min(mediaList.Count, mySetting.itemPerPage); i++)
             {
                 flpMain.Controls.Add(
-                        new ctrDisplayCard((Movie)medias[i])
+                        new ctrDisplayCard((Movie)mediaList[i])
                         {
                             Width = mySetting.cardSize.Width,
                             Height = mySetting.cardSize.Height
@@ -229,6 +245,11 @@ namespace MediaCollector
             {
                 string searchStr = txtSearch.Text;
 
+
+
+                /*
+                 
+                // search through all the controls in flpMain, if the control contains the search string, scroll to it and indicate the result
                 // Visible = false for ctrl that has different name
                 foreach (Control ctrl in flpMain.Controls)
                 {
@@ -245,8 +266,55 @@ namespace MediaCollector
                         break; 
                     }
                 }
+
+                */
+
+
+                flpMain.Controls.Clear();
+                ThreadPool.QueueUserWorkItem(T_search => this.SearchInList(searchStr));
+
             }
         }
+
+
+
+        private void SearchInList(string searchStr)
+        {
+            // do the filtering on the background thread (no UI access here)
+            var searchResult = mediaList
+                .Where(m => m.FolderName != null && m.FolderName.IndexOf(searchStr, StringComparison.OrdinalIgnoreCase) >= 0)
+                .ToList();
+
+            // Marshal creation/adding of controls to UI thread
+            if (flpMain.InvokeRequired)
+            {
+                flpMain.BeginInvoke(new Action(() => PopulateSearchResults(searchResult)));
+            }
+        }
+
+        private void PopulateSearchResults(List<Media> results)
+        {
+            // All UI work happens here on the UI thread
+            flpMain.Controls.Clear();
+
+            foreach (var media in results)
+            {
+                flpMain.Controls.Add(
+                    new ctrDisplayCard((Movie)media)
+                    {
+                        Width = mySetting.cardSize.Width,
+                        Height = mySetting.cardSize.Height
+                    }
+                );
+            }
+        }
+
+
+
+
+
+
+
 
         private void pbLoading_Click(object sender, EventArgs e)
         {
@@ -308,7 +376,7 @@ namespace MediaCollector
             // Add the controls for the current page
             for (int i = startIndex; i < endIndex; i++)
             {
-                Media media = medias[i];
+                Media media = mediaList[i];
                 flpMain.Controls.Add(
                     new ctrDisplayCard((Movie)media)
                     {

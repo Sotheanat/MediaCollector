@@ -18,11 +18,13 @@ namespace MediaCollector.Class
         /// </summary>
         public static string RootFolder { get; set; }
 
-        /// <summary>
-        /// Each media has all of the following
-        /// </summary>
+        
         public string CoverDir { get;  set;}
         public string FolderDir { get;  set; }
+
+        /// <summary>
+        /// FolderName is the title of the media, it is used for display and search purposes. It is not unique, but it is required.
+        /// </summary>
         public string FolderName { get;  set; }
 
         public Media()
